@@ -32,9 +32,9 @@ def init_theme(current_page="Home", show_nav=True):
     # ── Top Navigation Bar with Timeline + Theme Toggle ─
     if show_nav:
         _render_nav_bar(current_page)
-    else:
-        # Still need the theme toggle even if nav is hidden
-        _render_theme_toggle_only()
+    
+    # Always show theme toggle (it's fixed positioned)
+    _render_theme_toggle_only()
 
     # ── Inject CSS ──────────────────────────────────────
     _inject_theme_css(st.session_state["theme"])
@@ -120,6 +120,40 @@ def _render_nav_bar(current_page):
         width: 16px; height: 3px;
         background: linear-gradient(135deg, #6366f1, #a855f7);
         border-radius: 2px;
+    }}
+
+    /* ── Mobile Navigation Adjustments ── */
+    @media (max-width: 768px) {{
+        .nav-timeline-bar {{ padding: 0.4rem 0.5rem; }}
+        .nav-timeline-steps {{ 
+            gap: 2px; padding: 4px 6px; 
+            border-width: 1px;
+            max-width: 100%;
+            overflow-x: auto;
+            justify-content: space-around;
+            width: 100%;
+        }}
+        .nav-step {{ 
+            padding: 6px 8px; 
+            min-width: 60px;
+        }}
+        .nav-step + .nav-step::before {{
+            width: 12px; margin: 0;
+        }}
+        .nav-step-label {{
+            font-size: 0.5rem;
+            letter-spacing: 0;
+        }}
+        .nav-step-icon {{
+            font-size: 1.1rem;
+        }}
+    }}
+    
+    @media (max-width: 480px) {{
+        .nav-step-label {{ display: none; }}
+        .nav-step {{ padding: 8px 4px; min-width: 45px; }}
+        .nav-step-icon {{ font-size: 1.3rem; margin-bottom: 0; }}
+        .nav-timeline-steps {{ gap: 4px; border-radius: 20px; }}
     }}
     </style>
     <div class="nav-timeline-bar">
