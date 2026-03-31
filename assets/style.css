@@ -594,3 +594,69 @@ div[data-testid="stProgress"] > div > div::after {
     border: 1px solid var(--border-color) !important;
     box-shadow: var(--shadow-card) !important;
 }
+
+/* ── Responsive Design Layer ───────────────────────── */
+
+/* Desktop & Large Tablets (Default) */
+@media (min-width: 1024px) {
+    [data-testid="stAppViewBlockContainer"] {
+        padding: 3rem 5rem !important;
+    }
+}
+
+/* Tablets & Small Laptops */
+@media (max-width: 1024px) {
+    [data-testid="stAppViewBlockContainer"] {
+        padding: 2rem 3rem !important;
+    }
+    .custom-card {
+        padding: 2rem 1.5rem;
+    }
+    .section-header {
+        font-size: 1.5rem;
+    }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+    [data-testid="stAppViewBlockContainer"] {
+        padding: 1rem 1rem !important;
+    }
+    
+    /* Adjust Metric Cards for 1 column */
+    [data-testid="stHorizontalBlock"] {
+        flex-direction: column !important;
+        gap: 1rem !important;
+    }
+
+    /* Adjust Custom Cards */
+    .custom-card {
+        padding: 1.5rem 1rem;
+        margin-bottom: 1.5rem;
+    }
+    .custom-card h3 {
+        font-size: 1.3rem !important;
+    }
+    
+    /* Responsive Typography */
+    h1 { font-size: 1.8rem !important; }
+    h2 { font-size: 1.5rem !important; }
+    .section-header { font-size: 1.3rem !important; }
+    
+    /* Navigation Adjustments handled in theme.py */
+    
+    /* Hide specific non-essential desktop elements */
+    .timeline-line { display: none; }
+    .timeline-step { width: 100% !important; margin-bottom: 2rem; }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 480px) {
+    .stButton > button {
+        width: 100% !important;
+    }
+    .score-badge {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+    }
+}
